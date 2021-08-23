@@ -27,25 +27,25 @@ function submitHandler() {
 }
 
 //function to calculate profit or loss
-function calculateProfitOrLoss(intPrc, qant, curPrc) {
+function calculateProfitOrLoss(intPrc, quant, curPrc) {
     if (intPrc > curPrc) {
         //calculate loss and loss percentage
-        let loss = (intPrc - curPrc) * qant;
+        let loss = (intPrc - curPrc) * quant;
         if (!(Number.isInteger(loss))) {
             loss = loss.toFixed(2);
         }
-        let lossPercent = (loss / intPrc) * 100;
+        let lossPercent = (loss / (intPrc * quant)) * 100;
         if (!(Number.isInteger(lossPercent))) {
             lossPercent = lossPercent.toFixed(2);
         }
         displayMessage(`Oops it is loss, the loss is ${loss} and the loss percentage is ${lossPercent}%`);
     } else if (curPrc > intPrc) {
         //calculate profit and profit percentage
-        let profit = (curPrc - intPrc) * qant;
+        let profit = (curPrc - intPrc) * quant;
         if (!(Number.isInteger(profit))) {
             profit = profit.toFixed(2);
         }
-        let profitPercent = (profit / intPrc) * 100;
+        let profitPercent = (profit / (intPrc * quant)) * 100;
         if (!(Number.isInteger(profitPercent))) {
             profitPercent = profitPercent.toFixed(2);
         }
