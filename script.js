@@ -16,6 +16,7 @@ function displayMessage(text) {
 
 //submitHandler definition
 function submitHandler() {
+    refreshRecord();
     let intAmt = Number(initPrice.value);
     let StockNum = Number(stockQuant.value);
     let currAmt = Number(currPrice.value);
@@ -33,6 +34,11 @@ function changeTheme(percent) {
         container.style.backgroundColor = "red";
         container.style.Color = "white";
     }
+}
+
+function refreshRecord() {
+    msg.innerText = "";
+    container.style.backgroundColor = "white";
 }
 
 //function to calculate profit or loss
