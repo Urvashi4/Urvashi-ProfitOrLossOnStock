@@ -4,6 +4,7 @@ let stockQuant = document.querySelector('#stock-quant');
 let currPrice = document.querySelector('#curr-amt');
 let submitBtn = document.querySelector('.SubmitBtn');
 let msg = document.querySelector('.output');
+let container = document.querySelector('.flexContainer');
 
 //adding EventListener 
 submitBtn.addEventListener("click", submitHandler);
@@ -26,6 +27,14 @@ function submitHandler() {
     }
 }
 
+//To change the theme 
+function changeTheme(percent) {
+    if (percent >= 50) {
+        container.style.backgroundColor = "red";
+        container.style.Color = "white";
+    }
+}
+
 //function to calculate profit or loss
 function calculateProfitOrLoss(intPrc, quant, curPrc) {
     if (intPrc > curPrc) {
@@ -38,7 +47,8 @@ function calculateProfitOrLoss(intPrc, quant, curPrc) {
         if (!(Number.isInteger(lossPercent))) {
             lossPercent = lossPercent.toFixed(2);
         }
-        displayMessage(`Oops it is loss, the loss is ${loss} and the loss percentage is ${lossPercent}%`);
+        displayMessage(`Oops 😨 it is loss, the loss is ${loss} and the loss percentage is ${lossPercent}%`);
+        changeTheme(lossPercent);
     } else if (curPrc > intPrc) {
         //calculate profit and profit percentage
         let profit = (curPrc - intPrc) * quant;
@@ -49,7 +59,7 @@ function calculateProfitOrLoss(intPrc, quant, curPrc) {
         if (!(Number.isInteger(profitPercent))) {
             profitPercent = profitPercent.toFixed(2);
         }
-        displayMessage(`Yey it is gain, the profit is ${profit} and the profit percent is ${profitPercent}%`);
+        displayMessage(`Yey 😍 it is gain, the profit is ${profit} and the profit percent is ${profitPercent}%`);
     } else {
         //display some message to represent no loss or no gain
         displayMessage("There is no loss or profit!!");
